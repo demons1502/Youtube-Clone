@@ -1,0 +1,59 @@
+@use '../../scss/' as *;
+
+.video {
+    margin-bottom: 1rem;
+    padding: 0.7rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+
+    &__top {
+        margin-bottom: 0.5rem;
+        position: relative;
+
+        img {
+            width: 100%;
+        }
+
+        span {
+            position: absolute;
+            bottom: 0.3rem;
+            right: 0.3rem;
+            padding: 0.2rem;
+            background: #080808ec;
+            border-radius: 3px;
+        }
+    }
+
+    &__channel {
+        @include flex(space-around, flex-start);
+        margin-top: 1rem;
+        img {
+            width: 36px;
+            height: 36px;
+
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            cursor: pointer;
+        }
+
+        p {
+            margin-bottom: 0.1rem;
+            color: #fff;
+            @include line-clamp(2);
+        }
+    }
+
+    &__details {
+        margin-left: 2.8rem;
+        font-size: 12px;
+        p {
+            line-height: 1.5;
+            margin-bottom: -0.1rem;
+        }
+
+        span {
+            padding-right: 0.5rem;
+        }
+    }
+}
