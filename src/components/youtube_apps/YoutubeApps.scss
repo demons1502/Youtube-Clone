@@ -1,0 +1,46 @@
+@use '../../scss/' as *;
+
+.apps {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: $black-primary;
+    z-index: 1000;
+    right: 0;
+    top: 45px;
+    width: 210px;
+    border-bottom: 1.6px solid #333;
+    border-left: 1.6px solid #333;
+    border-right: 1.6px solid #333;
+    display: none;
+    &__item {
+        @include flex(_, center);
+        padding: 0.7rem 1rem;
+
+        svg {
+            width: 24px;
+            height: 24px;
+            margin-right: 0.5rem;
+        }
+
+        span {
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: #fff;
+        }
+
+        &:hover {
+            background-color: #333;
+        }
+    }
+
+    .line {
+        width: 100%;
+        height: 1.5px;
+        background-color: #333;
+    }
+
+    &.active {
+        display: block;
+    }
+}

@@ -12,7 +12,6 @@ import './App.scss';
 
 function App() {
     const [sidebar, toggleSidebar] = useState(false);
-
     const handleToggleSidebar = () => toggleSidebar((preValue) => !preValue);
 
     return (

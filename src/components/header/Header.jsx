@@ -1,9 +1,14 @@
 import React from 'react';
 import './Header.scss';
 
+import YoutubeApps from '../youtube_apps/YoutubeApps';
+import Notifications from '../notifications/Notifications';
+
+import { fake_notifications } from '../../components/notifications/dummyData';
+
 import { FaBars } from 'react-icons/fa';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { MdNotifications, MdApps } from 'react-icons/md';
+import { MdNotifications } from 'react-icons/md';
 
 const Header = ({ handleToggleSidebar }) => {
     return (
@@ -25,8 +30,21 @@ const Header = ({ handleToggleSidebar }) => {
                 </button>
             </form>
             <div className='header__icons'>
-                <MdNotifications size={28} />
-                <MdApps size={28} />
+                <div className='youtube__apps'>
+                    <YoutubeApps />
+                </div>
+                <div className='notifications'>
+                    <MdNotifications size={28} />
+                    {fake_notifications.map((item, index) => (
+                        <Notifications
+                            key={index}
+                            proImage={item.proImage}
+                            text={item.text}
+                            time={item.time}
+                            thumbnail={item.thumbnail}
+                        />
+                    ))}
+                </div>
                 <img
                     src='https://thumbs.dreamstime.com/b/unknown-businessman-avatar-profile-picture-black-white-illustration-35616527.jpg'
                     alt='avatar'
@@ -36,4 +54,4 @@ const Header = ({ handleToggleSidebar }) => {
     );
 };
 
-export default Header;
+export default React.memo(Header);
