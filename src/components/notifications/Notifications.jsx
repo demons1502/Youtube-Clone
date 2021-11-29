@@ -1,9 +1,10 @@
 import React from 'react';
 
 import { AiFillSetting } from 'react-icons/ai';
+import { fake_notifications } from '../../components/notifications/dummyData';
 
 import './Notifications.scss';
-const Notifications = ({ proImage, text, time, thumbnail }) => {
+const Notifications = () => {
     return (
         <>
             <div className='notifications__main'>
@@ -12,16 +13,18 @@ const Notifications = ({ proImage, text, time, thumbnail }) => {
                     <AiFillSetting size={25} />
                 </div>
                 <div className='line'></div>
-                <div className='notifications__main__item'>
-                    <img className='avatar' src={proImage} alt='' />
-                    <div className='details'>
-                        <p className='text'>{text}</p>
-                        <span className='time'>{time}</span>
+                {fake_notifications.map((item, index) => (
+                    <div key={index} className='notifications__main__item'>
+                        <img className='avatar' src={item.proImage} alt='' />
+                        <div className='details'>
+                            <p className='text'>{item.text}</p>
+                            <span className='time'>{item.time}</span>
+                        </div>
+                        <div className='thumbnail'>
+                            <img src={item.thumbnail} alt='' />
+                        </div>
                     </div>
-                    <div className='thumbnail'>
-                        <img src={thumbnail} alt='' />
-                    </div>
-                </div>
+                ))}
             </div>
         </>
     );
