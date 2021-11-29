@@ -6,7 +6,6 @@ import Notifications from '../notifications/Notifications';
 
 import { FaBars } from 'react-icons/fa';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { MdNotifications } from 'react-icons/md';
 
 const Header = ({ handleToggleSidebar }) => {
     return (
@@ -32,7 +31,6 @@ const Header = ({ handleToggleSidebar }) => {
                     <YoutubeApps />
                 </div>
                 <div className='notifications'>
-                    <MdNotifications size={28} />
                     <Notifications />
                 </div>
                 <img
