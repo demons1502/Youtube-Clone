@@ -3,6 +3,7 @@ import './Header.scss';
 
 import YoutubeApps from '../youtube_apps/YoutubeApps';
 import Notifications from '../notifications/Notifications';
+import Profile from '../profile/Profile';
 
 import { FaBars } from 'react-icons/fa';
 import { AiOutlineSearch } from 'react-icons/ai';
@@ -33,10 +34,9 @@ const Header = ({ handleToggleSidebar }) => {
                 <div className='notifications'>
                     <Notifications />
                 </div>
-                <img
-                    src='https://thumbs.dreamstime.com/b/unknown-businessman-avatar-profile-picture-black-white-illustration-35616527.jpg'
-                    alt='avatar'
-                />
+                <div className='profile'>
+                    <Profile />
+                </div>
             </div>
         </div>
     );

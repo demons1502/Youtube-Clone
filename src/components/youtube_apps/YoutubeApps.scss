@@ -12,7 +12,10 @@
     border-bottom: 1.6px solid #333;
     border-left: 1.6px solid #333;
     border-right: 1.6px solid #333;
-    display: none;
+    transition: all 0.2s ease-in;
+    opacity: 0;
+    visibility: hidden;
+
     &__item {
         @include flex(_, center);
         padding: 0.7rem 1rem;
@@ -41,6 +44,7 @@
     }
 
     &.active {
-        display: block;
+        opacity: 1;
+        visibility: visible;
     }
 }

@@ -2,7 +2,7 @@
 
 .notifications__main {
     position: absolute;
-    z-index: 1000;
+    z-index: 999;
     right: 0;
     top: 45px;
     border-bottom: 1.6px solid #333;
@@ -14,10 +14,13 @@
     overflow-y: scroll;
     overflow-x: hidden;
     height: 80vh;
-    display: none;
+    transition: all 0.2s ease-in;
+    opacity: 0;
+    visibility: hidden;
 
     &.active {
-        display: block;
+        opacity: 1;
+        visibility: visible;
     }
 
     &::-webkit-scrollbar {

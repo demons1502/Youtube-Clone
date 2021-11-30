@@ -5,12 +5,14 @@ import { Container } from 'react-bootstrap';
 import Home from './pages/HomePage/Home.jsx';
 import Header from './components/header/Header.jsx';
 import Sidebar from './components/sidebar/Sidebar';
+import Login from './pages/LoginPage/Login.jsx';
+
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import './App.scss';
 
-function App() {
+const Layout = ({ children }) => {
     const [sidebar, toggleSidebar] = useState(false);
     const handleToggleSidebar = () => toggleSidebar((preValue) => !preValue);
 
@@ -23,10 +25,29 @@ function App() {
                     handleToggleSidebar={handleToggleSidebar}
                 />
                 <Container fluid className='app__main'>
-                    <Home />
+                    {children}
                 </Container>
             </div>
         </>
+    );
+};
+
+function App() {
+    return (
+        <Routes>
+            <Route
+                exact
+                path='/'
+                element={
+                    <Layout>
+                        <Home />
+                    </Layout>
+                }
+            />
+            <Route path='/auth' element={<Login />} />
+
+            <Route path='*' element={<Navigate to='/' />} />
+        </Routes>
     );
 }
 

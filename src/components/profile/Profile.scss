@@ -1,0 +1,84 @@
+@use '../../scss/' as *;
+
+.profile__drop {
+    position: absolute;
+    width: 280px;
+    background-color: #212121fa;
+    right: 48px;
+    top: 0;
+    z-index: 999;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 90vh;
+    transition: all 0.2s ease-in;
+    opacity: 0;
+    visibility: hidden;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        background-color: $black-primary;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #333;
+    }
+
+    .line {
+        height: 1.5px;
+        background-color: #333;
+    }
+
+    &__top {
+        @include flex(space-between, flex-start);
+        padding: 10px 20px 10px 10px;
+
+        .details {
+            padding-right: 2rem;
+            .info {
+                color: #fff;
+
+                span {
+                    font-weight: bold;
+                }
+
+                p {
+                    font-size: 12px;
+                }
+            }
+
+            a {
+                text-decoration: none;
+                font-size: 14px;
+            }
+        }
+    }
+
+    &__bot {
+        padding-top: 0.5rem;
+
+        .bot__item {
+            @include flex(flex-start, center);
+            padding-bottom: 0.5rem;
+            padding-top: 0.5rem;
+
+            svg {
+                width: 50px;
+                font-size: 24px;
+            }
+
+            span {
+                font-size: 15px;
+                color: #fff;
+            }
+
+            &:hover {
+                background-color: #333;
+            }
+        }
+    }
+}

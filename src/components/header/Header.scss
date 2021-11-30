@@ -54,19 +54,26 @@
         flex: 0.15;
         @include flex(space-around, center);
 
-        & > img {
-            border-radius: 50%;
-            width: 40px;
-            object-fit: contain;
-            margin-left: 5px;
-        }
-
         .youtube__apps {
             position: relative;
+            cursor: pointer;
         }
 
         .notifications {
             position: relative;
+            cursor: pointer;
+        }
+
+        .profile {
+            position: relative;
+        }
+
+        & > .profile img {
+            border-radius: 50%;
+            width: 40px;
+            object-fit: contain;
+            margin-left: 5px;
+            cursor: pointer;
         }
     }
 }
