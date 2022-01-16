@@ -73,7 +73,7 @@ const Video = ({ video }) => {
                 <span>
                     <AiFillEye /> {numeral(views).format('0.a')} Views
                 </span>
-                <span>{moment(publishedAt).fromNow}</span>
+                <span>{moment(publishedAt).fromNow()}</span>
             </div>
         </div>
     );
