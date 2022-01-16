@@ -32,23 +32,17 @@ const Layout = ({ children }) => {
     );
 };
 
-function App() {
+const Test = () => <h1>123</h1>;
+
+const App = () => {
     return (
         <Routes>
-            <Route
-                exact
-                path='/'
-                element={
-                    <Layout>
-                        <Home />
-                    </Layout>
-                }
-            />
+            <Route exact path='/' element={<Layout>{<Home />}</Layout>} />
             <Route path='/auth' element={<Login />} />
 
             <Route path='*' element={<Navigate to='/' />} />
         </Routes>
     );
-}
+};
 
 export default App;

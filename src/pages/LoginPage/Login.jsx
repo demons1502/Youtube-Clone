@@ -7,6 +7,7 @@ import { login } from '../../redux/actions/auth_action';
 import './Login.scss';
 
 const Login = () => {
+    console.log('re-render');
     const dispatch = useDispatch();
 
     const accessToken = useSelector((state) => state.auth.accessToken);
