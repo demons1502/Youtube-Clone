@@ -55,7 +55,6 @@ const Home = () => {
                     : [...skeleton].map(() => (
                           <Col lg={3} md={4}>
                               <SkeletonVideo />
-                              {/* <h1>123</h1> */}
                           </Col>
                       ))}
             </InfiniteScroll>
