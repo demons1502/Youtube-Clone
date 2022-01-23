@@ -8,7 +8,9 @@
     height: 90vh;
     padding-top: 2rem;
     transition: all 0.2s ease-in;
-
+    position: sticky;
+    left: 0;
+    top: 10vh;
     li {
         @include flex(_, center);
         padding: 0.6rem 1.5rem;

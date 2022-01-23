@@ -1,4 +1,9 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import {
+    getVideosByCategory,
+    getPopularVideos,
+} from '../../redux/actions/videos_action';
 import './CategoriesBar.scss';
 
 const keywords = [
@@ -11,7 +16,7 @@ const keywords = [
     'Music',
     'House Nation',
     'Guitar',
-    'Bengali Songs',
+    'English Songs',
     'Coding',
     'Cricket',
     'Football',
@@ -22,10 +27,17 @@ const keywords = [
 ];
 
 const CategoriesBar = () => {
-    const [activeElement, setActiveElement] = useState('All');
+    const [activeElement, setActiveElement] = useState('ALL');
+
+    const dispatch = useDispatch();
 
     const handleClick = (item) => {
         setActiveElement(item);
+        if (item === 'ALL') {
+            dispatch(getPopularVideos(item));
+        } else {
+            dispatch(getVideosByCategory(item));
+        }
     };
 
     return (

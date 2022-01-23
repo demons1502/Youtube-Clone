@@ -14,13 +14,22 @@ body {
     color: $text-color;
     font-family: 'Roboto', sans-serif;
     letter-spacing: 0.1px;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        background-color: $black-primary;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #333;
+    }
 }
 
 .app__container {
     display: flex;
-    height: 90vh;
+    margin-top: 10vh;
 }
 
-.app__main {
-    overflow-y: scroll;
-}
+// .app__main {
+//     overflow-y: scroll;
+// }

@@ -6,7 +6,7 @@ import {
 
 import request from '../../api';
 
-export const getPopularVideos = () => async (dispatch) => {
+export const getPopularVideos = () => async (dispatch, getState) => {
     try {
         dispatch({
             type: HOME_VIDEOS_REQUEST,
@@ -17,7 +17,7 @@ export const getPopularVideos = () => async (dispatch) => {
                 chart: 'mostPopular',
                 regionCode: 'VN',
                 maxResults: 20,
-                pageToken: '',
+                pageToken: getState().homeVideos.nextPageToken,
             },
         });
 
@@ -28,6 +28,41 @@ export const getPopularVideos = () => async (dispatch) => {
             payload: {
                 videos: data.items,
                 nextPageToken: data.nextPageToken,
+                category: 'ALL',
+            },
+        });
+    } catch (e) {
+        console.log(e.message);
+        dispatch({
+            type: HOME_VIDEOS_FAIL,
+            payload: e.message,
+        });
+    }
+};
+
+export const getVideosByCategory = (keyword) => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: HOME_VIDEOS_REQUEST,
+        });
+        const { data } = await request('/search', {
+            params: {
+                part: 'snippet',
+                maxResults: 20,
+                pageToken: getState().homeVideos.nextPageToken,
+                q: keyword,
+                type: 'video',
+            },
+        });
+
+        console.log(data);
+
+        dispatch({
+            type: HOME_VIDEOS_SUCCESS,
+            payload: {
+                videos: data.items,
+                nextPageToken: data.nextPageToken,
+                category: keyword,
             },
         });
     } catch (e) {
