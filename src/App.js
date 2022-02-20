@@ -11,6 +11,7 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
+import WatchPage from './pages/WatchPage/WatchPage.jsx';
 
 const Layout = ({ children }) => {
     const [sidebar, toggleSidebar] = useState(false);
@@ -43,9 +44,28 @@ const App = () => {
                         <Home />
                     </Layout>
                 }
-            ></Route>
+            />
             <Route path='/auth' element={<Login />} />
-            <Route path='*' element={<Navigate to='/home' />} />
+
+            <Route
+                path='/search'
+                element={
+                    <Layout>
+                        <h1>Search</h1>
+                    </Layout>
+                }
+            />
+
+            <Route
+                path='/watch/:id'
+                element={
+                    <Layout>
+                        <WatchPage />
+                    </Layout>
+                }
+            />
+
+            <Route path='*' element={<Navigate to='/' />} />
         </Routes>
     );
 };

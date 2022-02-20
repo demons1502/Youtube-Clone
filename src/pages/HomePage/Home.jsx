@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Col } from 'react-bootstrap';
 import Video from '../../components/video/Video.jsx';
 import CategoriesBar from '../../components/categoriesBar/CategoriesBar.jsx';
 import { useDispatch, useSelector } from 'react-redux';
@@ -26,11 +26,11 @@ const Home = () => {
     console.log(loading);
 
     const fetchData = () => {
-        if (activeCategory === 'ALL') {
-            dispatch(getPopularVideos());
-        } else {
-            dispatch(getVideosByCategory(activeCategory));
-        }
+        // if (activeCategory === 'ALL') {
+        //     dispatch(getPopularVideos());
+        // } else {
+        //     dispatch(getVideosByCategory(activeCategory));
+        // }
     };
 
     return (
@@ -52,8 +52,8 @@ const Home = () => {
                               <Video video={item} />
                           </Col>
                       ))
-                    : [...skeleton].map(() => (
-                          <Col lg={3} md={4}>
+                    : [...skeleton].map((item, index) => (
+                          <Col key={index} lg={3} md={4}>
                               <SkeletonVideo />
                           </Col>
                       ))}
