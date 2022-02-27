@@ -12,21 +12,21 @@ const VideoHorizontal = () => {
     const seconds = moment.duration('100').asSeconds();
     const _duration = moment.utc(seconds * 1000).format('mm:ss');
     return (
-        <Row className='videoHorizotnal m-1 py-2 align-items-center'>
-            <Col xs={6} md={4} className='videoHorizontal__left'>
+        <Row className='videoHorizontal m-1 py-2 align-items-center'>
+            <Col xs={6} md={6} className='videoHorizontal__left'>
                 <LazyLoadImage
                     src='https://thumbs.dreamstime.com/b/unknown-businessman-avatar-profile-picture-black-white-illustration-35616527.jpg'
                     effect='blur'
                     className='videoHorizontal__thumbnail'
                     wrapperClassName='videoHorizontal__thumbnail-wrapper'
                 />
-                <span className='video__top__duration'>{_duration}</span>
+                <span className='videoHorizontal__duration'>{_duration}</span>
             </Col>
-            <Col xs={6} md={4} className='videoHorizontal__right p-0'>
+            <Col xs={6} md={6} className='videoHorizontal__right p-0'>
                 <p className='videoHorizontal__title mb-1'>
                     Can I Create Accessible CSS Toggle Buttons?
                 </p>
-                <div className='videoHorizontal__details d-flex'>
+                <div className='videoHorizontal__details'>
                     <AiFillEye /> {numeral(100000).format('0.a')} Views ·&nbsp;
                     {moment('2022-02-20').fromNow()}
                 </div>
@@ -37,7 +37,7 @@ const VideoHorizontal = () => {
                         className='videoHorizontal__thumbnail'
                         wrapperClassName='videoHorizontal__thumbnail-wrapper'
                     /> */}
-                    <p>Mixi Gaming</p>
+                    <p className='mb-0'>Mixi Gaming</p>
                 </div>
             </Col>
         </Row>

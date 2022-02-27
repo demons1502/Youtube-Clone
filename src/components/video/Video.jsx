@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import request from '../../api';
 
 import moment from 'moment';
@@ -30,7 +31,7 @@ const Video = ({ video }) => {
 
     const _videoId = id?.videoId || id;
 
-    console.log(_videoId);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const get_video_detail = async () => {
@@ -63,8 +64,12 @@ const Video = ({ video }) => {
         get_channel_icon();
     }, [channelId]);
 
+    const handleClick = () => {
+        navigate(`/watch/${_videoId}`);
+    };
+
     return (
-        <div className='video'>
+        <div className='video' onClick={handleClick}>
             <div className='video__top'>
                 {/* <img src={medium.url} alt='video-thumbnail' /> */}
                 <LazyLoadImage
