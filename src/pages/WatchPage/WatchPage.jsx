@@ -6,18 +6,27 @@ import VideoHorizontal from '../../components/video_horizontal/VideoHorizontal';
 import VideoMetaData from '../../components/video_metadata/VideoMetaData';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getVideoById } from '../../redux/actions/videos_action';
+import {
+    getRelatedVideos,
+    getVideoById,
+} from '../../redux/actions/videos_action';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 const WatchPage = () => {
     const { id } = useParams();
     console.log(id);
-
     const dispatch = useDispatch();
-    const { video, loading } = useSelector((state) => state.selectedVideo);
 
     useEffect(() => {
         dispatch(getVideoById(id));
+        dispatch(getRelatedVideos(id));
     }, [dispatch, id]);
+
+    const { video, loading } = useSelector((state) => state.selectedVideo);
+
+    const { videos, loading: relatedVideoLoading } = useSelector(
+        (state) => state.relatedVideo
+    );
 
     return (
         <Row>
@@ -37,12 +46,26 @@ const WatchPage = () => {
                 ) : (
                     <h6>Loading</h6>
                 )}
-                <Comments />
+                <Comments
+                    videoId={id}
+                    totalComment={video?.statistics?.commentCount}
+                />
             </Col>
             <Col lg={5}>
-                {[...Array(10)].map((item, index) => (
-                    <VideoHorizontal key={index} />
-                ))}
+                {!relatedVideoLoading ? (
+                    videos
+                        ?.filter((video) => video.snippet)
+                        .map((video) => (
+                            <VideoHorizontal
+                                video={video}
+                                key={video.id.videoId}
+                            />
+                        ))
+                ) : (
+                    <SkeletonTheme>
+                        <Skeleton width='100%' height='130' count={15} />
+                    </SkeletonTheme>
+                )}
             </Col>
         </Row>
     );
