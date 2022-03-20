@@ -12,6 +12,7 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 import WatchPage from './pages/WatchPage/WatchPage.jsx';
+import SearchScreen from './pages/SearchPage.jsx';
 
 const Layout = ({ children }) => {
     const [sidebar, toggleSidebar] = useState(false);
@@ -48,10 +49,10 @@ const App = () => {
             <Route path='/auth' element={<Login />} />
 
             <Route
-                path='/search'
+                path='/search/:query'
                 element={
                     <Layout>
-                        <h1>Search</h1>
+                        <SearchScreen />
                     </Layout>
                 }
             />

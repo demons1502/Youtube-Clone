@@ -10,8 +10,7 @@
     }
 
     &__thumbnail {
-        width: 168px;
-        height: 94px;
+        width: 100%;
         object-fit: cover;
 
         &-channel {
@@ -27,7 +26,7 @@
     &__duration {
         position: absolute;
         bottom: 0.2rem;
-        right: 2.3rem;
+        right: 1rem;
         color: white;
         font-size: 0.9rem;
         padding: 0.2rem;

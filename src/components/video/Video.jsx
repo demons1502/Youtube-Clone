@@ -34,6 +34,7 @@ const Video = ({ video }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        let unmounted = false;
         const get_video_detail = async () => {
             const {
                 data: { items },
@@ -43,13 +44,19 @@ const Video = ({ video }) => {
                     id: _videoId,
                 },
             });
-            setDuration(items[0].contentDetails.duration);
-            setViews(items[0].statistics.viewCount);
+            if (!unmounted) {
+                setDuration(items[0].contentDetails.duration);
+                setViews(items[0].statistics.viewCount);
+            }
         };
         get_video_detail();
+        return () => {
+            unmounted = true;
+        };
     }, [_videoId]);
 
     useEffect(() => {
+        let unmounted = false;
         const get_channel_icon = async () => {
             const {
                 data: { items },
@@ -59,9 +66,14 @@ const Video = ({ video }) => {
                     id: channelId,
                 },
             });
-            setChannelIcon(items[0].snippet.thumbnails.default);
+            if (!unmounted) {
+                setChannelIcon(items[0].snippet.thumbnails.default);
+            }
         };
         get_channel_icon();
+        return () => {
+            unmounted = true;
+        };
     }, [channelId]);
 
     const handleClick = () => {
