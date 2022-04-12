@@ -7,7 +7,7 @@ import {
 import './CategoriesBar.scss';
 
 const keywords = [
-    'All',
+    'ALL',
     'Trap Nation',
     'Avicii',
     'React Native',

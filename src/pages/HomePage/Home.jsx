@@ -26,11 +26,11 @@ const Home = () => {
     console.log(loading);
 
     const fetchData = () => {
-        // if (activeCategory === 'ALL') {
-        //     dispatch(getPopularVideos());
-        // } else {
-        //     dispatch(getVideosByCategory(activeCategory));
-        // }
+        if (activeCategory === 'ALL') {
+            dispatch(getPopularVideos());
+        } else {
+            dispatch(getVideosByCategory(activeCategory));
+        }
     };
 
     return (
